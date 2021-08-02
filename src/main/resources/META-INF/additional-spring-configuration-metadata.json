@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "spring.jpa.hibernate.ddl-auto_reconnect",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.hibernate.ddl-auto_reconnect'"
+  },
+  {
+    "name": "privateKey",
+    "type": "java.lang.String",
+    "description": "A description for 'privateKey'"
+  },
+  {
+    "name": "privateKey",
+    "type": "java.lang.String",
+    "description": "A description for 'privateKey'"
+  },
+  {
+    "name": "privateKey",
+    "type": "java.lang.String",
+    "description": "A description for 'privateKey'"
+  },
+  {
+    "name": "privateKey",
+    "type": "java.lang.String",
+    "description": "A description for 'privateKey'"
+  },
+  {
+    "name": "privateKey",
+    "type": "java.lang.String",
+    "description": "A description for 'privateKey'"
+  },
+  {
+    "name": "env.hash",
+    "type": "java.lang.String",
+    "description": "A description for 'env.hash'"
+  },
+  {
+    "name": "env.privateKey",
+    "type": "java.lang.String",
+    "description": "A description for 'env.privateKey'"
+  }
+]}
