@@ -1,6 +1,10 @@
 package com.example.resttest.models;
 
+import java.math.BigDecimal;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,6 +34,7 @@ public class ResultsApi {
 	private String isbn;
 	@Size(max = 5000)
 	private String description;
+	private LocalDate date;
 
 	public Long getComic_id() {
 		return comic_id;
@@ -48,9 +53,7 @@ public class ResultsApi {
 	}
 
 	public List<PricesDataApi> getPrices() {
-//		for (int i = 0; i < this.prices.size(); i++) {
-//			
-//		}
+		discount(isbn, prices);
 		return prices;
 	}
 
@@ -65,6 +68,7 @@ public class ResultsApi {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
+	
 
 	public String getDescription() {
 		return description;
@@ -91,7 +95,67 @@ public class ResultsApi {
 				+ ", isbn=" + isbn + ", description=" + description + "]";
 	}
 	
+	private boolean isbnCheck(String isbn) {
+		if (isbn.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
+	}	
+	
+	private boolean checkIsbnAgainstDOTW(String isbn) {
+		if (DayOfTheWeek(date, getIsbnLastDigit(isbn))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private char getIsbnLastDigit(String isbn) {
+		char[] charArray = isbn.toCharArray();
+		char lastDigit = charArray[-1];
+		return lastDigit;
+	}
 	
 	
+	private boolean DayOfTheWeek(LocalDate date, char lastDigit) {
+		DayOfWeek day = date.getDayOfWeek();
+		char dayOfTheWeek = (char) day.getValue();
+		switch (dayOfTheWeek) {
+			case 1:
+				if (lastDigit == 0 | lastDigit == 1) {
+					return true;
+				}
+			case 2:
+				if (lastDigit == 2 | lastDigit == 3) {
+					return true;
+				}
+			case 3:
+				if (lastDigit == 4 | lastDigit == 5) {
+					return true;
+				}
+			case 4:
+				if (lastDigit == 6 | lastDigit == 7) {
+					return true;
+				}
+			case 5:
+				if (lastDigit == 8 | lastDigit == 9) {
+					return true;
+				}
+		}
+		return false;
+	}
 	
+	
+	private void discount(String isbn, List<PricesDataApi> OldPrices) {
+		BigDecimal percentualDiscount = new BigDecimal("0.9");
+		if (isbnCheck(isbn) && checkIsbnAgainstDOTW(isbn)) {
+			for (int i = 0; i < OldPrices.size(); i++) {
+				PricesDataApi pricesDataApi = OldPrices.get(i);
+				BigDecimal value = pricesDataApi.getPrice();
+				BigDecimal newValue = value.multiply(percentualDiscount);
+				pricesDataApi.setPrice(newValue);
+				}
+		}
+	}
 }

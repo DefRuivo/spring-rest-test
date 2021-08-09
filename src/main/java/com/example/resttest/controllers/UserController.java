@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.resttest.models.ApiResponseModel;
 import com.example.resttest.models.UserModel;
-import com.example.resttest.respository.ApiResponseRepository;
-import com.example.resttest.respository.UserModelRepository;
+import com.example.resttest.respositories.ApiResponseRepository;
+import com.example.resttest.respositories.UserModelRepository;
 
 
 @RestController
