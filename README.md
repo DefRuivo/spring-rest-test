@@ -29,7 +29,10 @@ privateKey=APR1V4T3K3y
 hash=H4SHC0D3
 ```
 
-You are ready to start the server
+You are ready to start the server!
+
+Click on ```Boot Dashboard``` with right click and click on ```(Re)start``` 
+
 # Usage
 
 On this tutorial i will be using https://web.postman.co/
