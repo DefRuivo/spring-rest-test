@@ -1,7 +1,7 @@
 
-# Zup's Spring Test
+# Spring Test
 
-> The focus of this project is to learn a new framework and getter a better skill with Java, i will be using the test i received from the company Zup.
+> The focus of this project is to learn a new framework and getter a better skill with Java
 
 # The Challenge
 
